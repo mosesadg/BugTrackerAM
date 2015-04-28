@@ -1,0 +1,37 @@
+﻿
+@using BugTrackerAM.Models.CodeFirst
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>User Role Management</h2>
+
+<div>
+
+    <div class=" ="col-md-12">
+        <table>
+            <thead> 
+                <tr>
+                <th>User Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                    
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach(var user in Model)
+                {
+                    <tr>
+                        <td> @user.DisplayName</td>
+                        <td> @user.Email</td>
+                
+                         <td>
+                           @Html.ActionLink("Edit Users", "EditUser", new{Id= user.Id  })
+                         </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

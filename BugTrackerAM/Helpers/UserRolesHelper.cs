@@ -21,7 +21,7 @@ namespace BugTrackerAM.Helpers
 
         }
 
-        public IList<string> ListUSerRoles(string userId)
+        public IList<string> ListUserRoles(string userId)
         {
         return manager.GetRoles(userId);
 
