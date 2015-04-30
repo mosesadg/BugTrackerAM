@@ -15,6 +15,6 @@ namespace BugTrackerAM.Models.CodeFirst
 
 
         public virtual Ticket Tickets { get; set; }
-        public virtual ApplicationUser UserAssigned { get; set; }
+        public virtual ApplicationUser AssignedToUser { get; set; }
     }
 }

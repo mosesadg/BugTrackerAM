@@ -25,12 +25,12 @@ namespace BugTrackerAM.Controllers
         public ActionResult Index(int? page, string searchString, string sortOrder)
         {
 
-                //var tickets = db.Tickets.Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
-                //return View(tickets.ToList());
+                
+                //var UserId = User.Identity.GetUserId();//added by Thomas for list search
 
-              var tickets = db.Tickets.Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
+            var tickets = db.Tickets.Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
 
-              //tickets = db.Tickets.Where(t => t.Project.Users.Contains("Anand"));
+            //  tickets = db.Tickets.Where(t => t.Project.Users.Any(u => u.Id == UserId)); //added by Thomas for list display based on role
 
                 if (!String.IsNullOrEmpty(searchString))
                 {
@@ -59,9 +59,7 @@ namespace BugTrackerAM.Controllers
                             break;
                     }
 
-                    //tickets = db.Tickets.Where(t => t.OwnerUser.Roles.Equals("Developer"));
-
-                    
+                                       
 
                     return View(tickets.ToList());
                     //return View(tickets.ToList().ToPagedList(page ?? 1, 3));
@@ -96,6 +94,7 @@ namespace BugTrackerAM.Controllers
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name");
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name");
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name");
+            ViewBag.AssignedUser = new SelectList(db.Users, "Id", "DisplayName");
             return View();
         }
 
@@ -108,6 +107,7 @@ namespace BugTrackerAM.Controllers
         {
             if (ModelState.IsValid)
             {
+                ticket.Created = DateTimeOffset.Now;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -117,6 +117,7 @@ namespace BugTrackerAM.Controllers
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
+            ViewBag.AssignedUser = new SelectList(db.Users, "Id", "DisplayName",ticket.AssignedToUserId);
             return View(ticket);
         }
 
@@ -136,6 +137,7 @@ namespace BugTrackerAM.Controllers
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
+            ViewBag.AssignedUser = new SelectList(db.Users, "Id", "DisplayName");
             return View(ticket);
         }
 
@@ -156,6 +158,7 @@ namespace BugTrackerAM.Controllers
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
+            ViewBag.AssignedUser = new SelectList(db.Users, "Id", "DisplayName");
             return View(ticket);
         }
 
