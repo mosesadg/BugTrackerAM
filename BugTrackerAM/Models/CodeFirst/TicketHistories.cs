@@ -13,7 +13,7 @@ namespace BugTrackerAM.Models.CodeFirst
         public string OldValue { get; set; }
         public string NewValue { get; set; }
         public string Changed { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public virtual Ticket Tickets { get; set; }
         public virtual ApplicationUser UserAssigned { get; set; }

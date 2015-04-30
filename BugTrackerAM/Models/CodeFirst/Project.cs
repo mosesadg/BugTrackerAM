@@ -9,8 +9,8 @@ namespace BugTrackerAM.Models.CodeFirst
     {
         public Project ()
         {
-        this.ProjectUsers = new HashSet<ProjectUsers>();
-        this.Tickets = new HashSet<Ticket>();
+            this.Users = new HashSet<ApplicationUser>();
+            this.Tickets = new HashSet<Ticket>();
 
         }
 
@@ -20,7 +20,7 @@ namespace BugTrackerAM.Models.CodeFirst
 
 
         public virtual ICollection<Ticket> Tickets { get; set; }
-        public virtual ICollection<ProjectUsers> ProjectUsers { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
 
     }
 

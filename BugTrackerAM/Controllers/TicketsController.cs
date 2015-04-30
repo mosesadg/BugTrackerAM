@@ -10,6 +10,9 @@ using BugTrackerAM.Models;
 using BugTrackerAM.Models.CodeFirst;
 using PagedList;
 using PagedList.Mvc;
+using Microsoft.AspNet.Identity;
+using System.IO;
+
 
 
 namespace BugTrackerAM.Controllers
@@ -19,7 +22,7 @@ namespace BugTrackerAM.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tickets
-        public ActionResult Index(int? page, string searchString)
+        public ActionResult Index(int? page, string searchString, string sortOrder)
         {
 
                 //var tickets = db.Tickets.Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
@@ -27,14 +30,39 @@ namespace BugTrackerAM.Controllers
 
               var tickets = db.Tickets.Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
 
+              //tickets = db.Tickets.Where(t => t.Project.Users.Contains("Anand"));
+
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    tickets = db.Tickets.Where(t => t.Title.Contains(searchString) || t.Description.Contains(searchString));
 
+                    tickets = db.Tickets.Where(t => t.Title.Contains(searchString) || t.Description.Contains(searchString) || searchString == null);
+                    
                     return View(tickets.ToList());
                 }
                 else
                 {
+
+                    ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                    ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+                    switch (sortOrder)
+                    {
+                        case "name_desc":
+                            tickets = tickets.OrderByDescending(t => t.Created);
+                            break;
+                        case "Date":
+                            tickets = tickets.OrderBy(t => t.Title);
+                            break;
+
+                        default:
+                            tickets = tickets.OrderBy(t => t.TicketPriorityId);
+                            break;
+                    }
+
+                    //tickets = db.Tickets.Where(t => t.OwnerUser.Roles.Equals("Developer"));
+
+                    
+
                     return View(tickets.ToList());
                     //return View(tickets.ToList().ToPagedList(page ?? 1, 3));
                     //return View(db.ticket.OrderByDescending(t => t.Created).ToPagedList(page ?? 1, 3));
@@ -165,5 +193,56 @@ namespace BugTrackerAM.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateComment([Bind(Include = "TicketID, Comment")] TicketComments ticketcomment, int TicketId)
+        {
+            if (ModelState.IsValid)
+            {
+
+                db.TicketComments.Add(ticketcomment);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+               
+
+            }
+            return View();
+        }
+
+
+        
+        // GET: Posts/Delete/5
+        public ActionResult DeleteComment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TicketComments comment = db.TicketComments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        //Post delete
+        
+        [HttpPost, ActionName("DeleteComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteComment(int id)
+        {
+
+            TicketComments comment = db.TicketComments.Find(id);
+            db.TicketComments.Remove(comment);
+            db.SaveChanges();
+            //return RedirectToAction("Index");
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

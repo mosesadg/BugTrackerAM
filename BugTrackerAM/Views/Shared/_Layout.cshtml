@@ -26,7 +26,62 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
                     <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
                     <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>
-                    <li>@Html.ActionLink("User-Roles", "Users", "Admin")</li>
+                    @*<li>@Html.ActionLink("User-Roles", "Users", "Admin")</li>*@
+
+
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        <li>
+                            @Html.ActionLink("Admin Dasboard","","")
+                            <ul>
+                                <li>@Html.ActionLink("Projects", "SubItemOne", "Home")</li>
+                                <li>@Html.ActionLink("Tickets", "SubItemTwo", "Home")</li>
+                                <li>@Html.ActionLink("Roles", "Users", "Admin")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("Project Manager"))
+                    {
+
+                        <li>
+                            @Html.ActionLink("Project-Manager Dasboard", "", "")
+                            <ul>
+                                <li>@Html.ActionLink("Projects", "SubItemOne", "Home")</li>
+                                <li>@Html.ActionLink("Tickets", "SubItemTwo", "Home")</li>
+                                <li>@Html.ActionLink("Roles", "Users", "Admin")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (User.IsInRole("Developer"))
+                    {
+
+                        <li>
+                            @Html.ActionLink("Developer Dasboard", "", "")
+                            <ul>
+                                <li>@Html.ActionLink("Projects", "SubItemOne", "Home")</li>
+                                <li>@Html.ActionLink("Tickets", "SubItemTwo", "Home")</li>
+                                <li>@Html.ActionLink("Roles", "Users", "Admin")</li>
+                            </ul>
+                        </li>
+                    }
+                    
+                    @if (User.IsInRole("Submitter"))
+                    {
+
+                        <li>
+                            @Html.ActionLink("Submitter Dasboard", "", "")
+                            <ul>
+                                <li>@Html.ActionLink("Projects", "SubItemOne", "Home")</li>
+                                <li>@Html.ActionLink("Tickets", "SubItemTwo", "Home")</li>
+                                <li>@Html.ActionLink("Roles", "Users", "Admin")</li>
+                            </ul>
+                        </li>
+                    }
+
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

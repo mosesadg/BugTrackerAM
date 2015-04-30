@@ -30,35 +30,70 @@
 <table class="table">
     <tr>
         <th>
+            @Html.ActionLink("Project", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Project.Name)
-        </th>
+        </th>*@
         <th>
+            @Html.ActionLink("Priority", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TicketPriority.Name)
-        </th>
+        </th>*@
         <th>
+            @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TicketStatus.Name)
-        </th>
+        </th>*@
+        
         <th>
+            @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+
+        @*<th>
             @Html.DisplayNameFor(model => model.TicketType.Name)
-        </th>
+        </th>*@
+
         <th>
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+
+        @*<th>
             @Html.DisplayNameFor(model => model.Title)
-        </th>
+        </th>*@
         <th>
+            @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Description)
-        </th>
+        </th>*@
         <th>
+            @Html.ActionLink("Created", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Created)
-        </th>
+        </th>*@
         <th>
+            @Html.ActionLink("Updated", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Updated)
-        </th>
+        </th>*@
         <th>
+            @Html.ActionLink("Owner", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.OwnerUserId)
-        </th>
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.AssignedToUserId)
+            @Html.ActionLink("Assigned to", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.AssignedToUserId)
+        </th>*@
         <th></th>
     </tr>
 

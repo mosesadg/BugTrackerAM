@@ -169,16 +169,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\ProjectUsersController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UserProjectsHelper.cs" />
     <Compile Include="Helpers\UserRolesHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserViewModel.cs" />
     <Compile Include="Models\CodeFirst\Project.cs" />
-    <Compile Include="Models\CodeFirst\ProjectUsers.cs" />
     <Compile Include="Models\CodeFirst\Ticket.cs" />
     <Compile Include="Models\CodeFirst\TicketAttachment.cs" />
     <Compile Include="Models\CodeFirst\TicketComments.cs" />
@@ -946,9 +947,13 @@
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Tickets\DeleteComment.cshtml" />
+    <Content Include="Views\ProjectUsers\AssignUsers.cshtml" />
+    <Content Include="Views\ProjectUsers\RemoveUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ProjectUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

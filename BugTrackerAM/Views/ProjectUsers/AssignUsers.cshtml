@@ -1,0 +1,59 @@
+﻿@model BugTrackerAM.Models.ProjectUsersViewModel
+
+@{
+    ViewBag.Title = "Users Projects";
+}
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Assign Users to Projects</h2>
+<br />
+
+
+
+@using (Html.BeginForm("AssignUsers", "ProjectUsers", null, FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.projectId)
+    @Html.DisplayFor(model => model.projectName)
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+
+            <div class="col-md-10">
+                @Html.ListBox("SelectedUsers", Model.UsersList, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Assign" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-2">
+            <a href="/Home/Index" class="btn"> Back to Dashboard</a>
+        </div>
+        <div class="col-sm-9">
+
+        </div>
+    </div>
+</div>
+

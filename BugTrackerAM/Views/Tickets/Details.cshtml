@@ -1,4 +1,5 @@
 ﻿@model BugTrackerAM.Models.CodeFirst.Ticket
+ 
 
 @{
     ViewBag.Title = "Details";
@@ -96,3 +97,46 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<form method="post" action="@Url.Action("CreateComment")">
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.AntiForgeryToken()
+            @Html.Hidden("TicketId", Model.Id)
+            @Html.TextArea("Comment", "", new { @class = "form-control", rows = "5", placeholder = "Enter your comment" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" style="border: 4pt ridge lightgrey" value="Create Comment" class="btn btn-default" />
+        </div>
+    </div>
+
+</form>
+</br>
+    </br>
+    </br>
+    </br>
+@foreach (var comment in Model.TicketComments)
+{
+    
+
+
+    <br /><p>@Html.Raw(comment.Comment)</p>
+
+
+    <br />
+    <td>
+        @Html.ActionLink("DeleteComment", "DeleteComment", new { id = comment.Id })
+    </td>
+        }
+
+
+
+
+        @*   @Html.ActionLink("EditComment", "EditComment", new { id = TicketComments.ID })
+            </td>*@
+
+
+

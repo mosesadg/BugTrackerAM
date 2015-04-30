@@ -16,8 +16,8 @@ namespace BugTrackerAM.Models.CodeFirst
         public int TicketTypeId { get; set; }
         public int TicketPriorityId { get; set; }
         public int TicketStatusId { get; set; }
-        public int OwnerUserId { get; set; }
-        public int AssignedToUserId { get; set; }
+        public string OwnerUserId { get; set; }
+        public string AssignedToUserId { get; set; }
 
         public virtual Project Project {get; set; }
         public virtual TicketTypes TicketType {get; set; }
