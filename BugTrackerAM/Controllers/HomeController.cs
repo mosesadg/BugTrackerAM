@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace BugTrackerAM.Controllers
 {
+   [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -19,7 +20,7 @@ namespace BugTrackerAM.Controllers
 
             return View();
         }
-
+       [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

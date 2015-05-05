@@ -51,7 +51,7 @@ namespace BugTrackerAM.Migrations
             ApplicationUser user;
 
 
-            if (!context.Users.Any(r => r.Email == "admin@coderfoundry.com"))
+            if (!context.Users.Any(r => r.Email == "moses.adg@gmail.com"))
             {
                 user = new ApplicationUser
 
@@ -152,9 +152,16 @@ namespace BugTrackerAM.Migrations
 
             user = userManager.FindByEmail("tparrish@coderfoundry.com");
             userManager.AddToRole(user.Id, "Developer");
-        
 
+            var status = context.TicketStatuses.FirstOrDefault(ts => ts.Name == "New");
+            if(status == null)
+            {
+                //make new status
+                //add to db.TicketStatuses
+                //save changes
+            }
            
+            //next one
 
 
        

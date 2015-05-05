@@ -26,11 +26,11 @@ namespace BugTrackerAM.Controllers
         {
 
                 
-                //var UserId = User.Identity.GetUserId();//added by Thomas for list search
+                var UserId = User.Identity.GetUserId();//added by Thomas for list search
 
             var tickets = db.Tickets.Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
 
-            //  tickets = db.Tickets.Where(t => t.Project.Users.Any(u => u.Id == UserId)); //added by Thomas for list display based on role
+            tickets = db.Tickets.Where(t => t.Project.Users.Any(u => u.Id == UserId)); //added by Thomas for list display based on role
 
                 if (!String.IsNullOrEmpty(searchString))
                 {

@@ -4,10 +4,6 @@
 @using PagedList.Mvc
 
 
-
-
-
-
 @{
     ViewBag.Title = "Index";
 }
@@ -21,7 +17,6 @@
         <input type="submit" value="Search" />
     </p>
 }
-
 
 
 <p>
@@ -124,10 +119,10 @@
             @Html.DisplayFor(modelItem => item.Updated)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OwnerUserId)
+            @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AssignedToUserId)
+            @Html.DisplayFor(modelItem => item.AssignedToUser.DisplayName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
