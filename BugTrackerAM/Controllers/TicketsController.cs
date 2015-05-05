@@ -150,6 +150,24 @@ namespace BugTrackerAM.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
+
+                ////added may 5
+            //};
+            
+            //db.TicketHistories.Add(AssignedHistory);
+            ////Fire off notification to user?
+            //var user = db.Users.Find(User.Identity.GetUserId());
+            //new EmailService ().SendAsync(new IdentityMessage
+            //{
+            //    Subject ="You have been assigned a new ticket",
+            //    Destination =user.Email,
+            //    Body = "Whatever you want"
+
+            //});
+            //}
+
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

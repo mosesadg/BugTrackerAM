@@ -1,143 +1,147 @@
 ﻿
-@model IEnumerable<BugTrackerAM.Models.CodeFirst.Ticket>
-
-@using PagedList.Mvc
-
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Tickets Index View</h2>
-
-@using (Html.BeginForm())
-{
-    <p>
-        <b style="color:Black"> Search for Tickets</b> @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-    </p>
-}
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Project", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Project.Name)
-        </th>*@
-        <th>
-            @Html.ActionLink("Priority", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.TicketPriority.Name)
-        </th>*@
-        <th>
-            @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.TicketStatus.Name)
-        </th>*@
-        
-        <th>
-            @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.TicketType.Name)
-        </th>*@
-
-        <th>
-            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>*@
-        <th>
-            @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>*@
-        <th>
-            @Html.ActionLink("Created", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>*@
-        <th>
-            @Html.ActionLink("Updated", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Updated)
-        </th>*@
-        <th>
-            @Html.ActionLink("Owner", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.OwnerUserId)
-        </th>*@
-        <th>
-            @Html.ActionLink("Assigned to", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.AssignedToUserId)
-        </th>*@
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Project.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketPriority.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketStatus.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketType.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Updated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssignedToUser.DisplayName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-
+<!-- Content ----Main White color area-->
+<section id="content" class="container">
     
-}
+    @model IEnumerable<BugTrackerAM.Models.CodeFirst.Ticket>
+
+    @using PagedList.Mvc
+
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Tickets Index View</h2>
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            <b style="color:Black"> Search for Tickets</b> @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
+
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Project", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Project.Name)
+                </th>*@
+            <th>
+                @Html.ActionLink("Priority", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.TicketPriority.Name)
+                </th>*@
+            <th>
+                @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.TicketStatus.Name)
+                </th>*@
+
+            <th>
+                @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.TicketType.Name)
+                </th>*@
+
+            <th>
+                @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>*@
+            <th>
+                @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
+            <th>
+                @Html.ActionLink("Created", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Created)
+                </th>*@
+            <th>
+                @Html.ActionLink("Updated", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Updated)
+                </th>*@
+            <th>
+                @Html.ActionLink("Owner", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.OwnerUserId)
+                </th>*@
+            <th>
+                @Html.ActionLink("Assigned to", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.AssignedToUserId)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Updated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignedToUser.DisplayName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+
+        }
 
 
 
-    @*Page@(Model.PageCount < ModelItem.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+        @*Page@(Model.PageCount < ModelItem.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
 
 
 
@@ -145,4 +149,12 @@
 
 
 
-</table>
+    </table>
+
+
+    </div>
+</section>
+
+
+
+
