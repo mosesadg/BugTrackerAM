@@ -88,9 +88,11 @@
     <header id="header" class="clearfix">
         <!-- Logo -->
         <a href="index.html" class="logo shadowed">
+
+         
             BUG TRACKER
         </a>
-
+        @Html.ActionLink("Bug Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <div class="dropdown profile-menu shadowed">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <img src="img/profile-pics/profile-pic.png" alt="" class="profile-pic">
@@ -203,57 +205,7 @@
                             <div class="clearfix"></div>
                         </div>
 
-                        <div class="listview overflow">
-                            <a class="media" href="">
-                                <img class="media-object pull-left" src="img/profile-pics/1.jpg" alt="">
-                                <div class="media-body">
-                                    David Villa <span class="date">2 Hrs ago</span><br>
-                                    <span class="shortline">Lorem ipsum dolor sit amet, per cu sole...</span>
-                                </div>
-                            </a>
-                            <a class="media" href="">
-                                <img class="media-object pull-left" src="img/profile-pics/1.jpg" alt="">
-                                <div class="media-body">
-                                    Jason Statom <span class="date">5 Hrs ago</span><br>
-                                    <span class="shortline" class="shortline">Vandy come to ipsum seen tuooth ya so...</span>
-                                </div>
-                            </a>
-                            <a class="media" href="">
-                                <img class="media-object pull-left" src="img/profile-pics/1.jpg" alt="">
-                                <div class="media-body">
-                                    Lilly Jackson <span class="date">9 Hrs ago</span><br>
-                                    <span class="shortline" class="shortline">Far schools wen smoothness prope soom...</span>
-                                </div>
-                            </a>
-                            <a class="media" href="">
-                                <img class="media-object pull-left" src="img/profile-pics/1.jpg" alt="">
-                                <div class="media-body">
-                                    Vin Diesal <span class="date">06 Nov</span><br>
-                                    <span class="shortline" class="shortline">Dolor boom with your cool sindims to the...</span>
-                                </div>
-                            </a>
-                            <a class="media" href="">
-                                <img class="media-object pull-left" src="img/profile-pics/1.jpg" alt="">
-                                <div class="media-body">
-                                    Jason Statom <span class="date">5 Hrs ago</span><br>
-                                    <span class="shortline" class="shortline">Vandy come to ipsum seen tuooth ya so...</span>
-                                </div>
-                            </a>
-                            <a class="media" href="">
-                                <img class="media-object pull-left" src="img/profile-pics/1.jpg" alt="">
-                                <div class="media-body">
-                                    Lilly Jackson <span class="date">9 Hrs ago</span><br>
-                                    <span class="shortline" class="shortline">Far schools wen smoothness prope soom...</span>
-                                </div>
-                            </a>
-                            <a class="media" href="">
-                                <img class="media-object pull-left" src="img/profile-pics/1.jpg" alt="">
-                                <div class="media-body">
-                                    Vin Diesal <span class="date">06 Nov</span><br>
-                                    <span class="shortline" class="shortline">Dolor boom with your cool sindims to the...</span>
-                                </div>
-                            </a>
-                        </div>
+                        
                         <div class="updates-footer">
                             <a href="">See All</a>
                         </div>
@@ -265,7 +217,7 @@
     </header>
     
 
-                @Html.ActionLink("Bug Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Bug Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -277,19 +229,19 @@
                     
                     
 
-                    <li>@Html.ActionLink("Take a Tour", "Index", "Projects")</li>
+                    @*<li>@Html.ActionLink("Take a Tour", "Index", "Projects")</li>*@
 
 
                     @if (User.IsInRole("Admin"))
                      {
-                        <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
-                        <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>
+                        @*<li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+                        <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>*@
                         <li>
-                            @Html.ActionLink("Admin Dasboard", "", "")
+                            @*@Html.ActionLink("Admin Dasboard", "", "")*@
 
                             <ul>
 
-                                <li>@Html.ActionLink("User-Roles", "Users", "Admin")</li>
+                                @*<li>@Html.ActionLink("User-Roles", "Users", "Admin")</li>*@
                                
                             </ul>
                         </li>
@@ -359,13 +311,23 @@
                     <a class="active" href="index.html"><i class="icon-home"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="typography.html"><i class="icon-quill"></i>Typography</a>
+                    @*<a href="Projects\index.html"><i class="icon-quill"></i>Typography</a>*@
+
+                <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+
+
+                
+
+                        
+
                 </li>
                 <li>
-                    <a href="wall.html"><i class="icon-bubbles-4"></i>Social Wall</a>
+                    @*<a href="wall.html"><i class="icon-bubbles-4"></i>Social Wall</a>*@
+                <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>
                 </li>
                 <li class="submenu">
-                    <a href=""><i class="icon-cog"></i>Widgets</a>
+                    @*<a href=""><i class="icon-cog"></i>Widgets</a>*@
+                <li>@Html.ActionLink("User-Roles", "Users", "Admin")</li>
                     <ul>
                         <li><a href="sidebar-widgets.html">Sidebar</a></li>
                         <li><a href="content-widgets.html">Content</a></li>
@@ -435,6 +397,29 @@
             <i class="icon-angle-right"></i>
         </span>
     </aside>
+
+        <!-- Right Sidebar -->
+        <aside id="rightbar" class="pull-right">
+            <div class="sidebar-container">
+                <!-- Date + Clock -->
+                <div class="clock shadowed">
+                    <div id="date"></div>
+                    <div id="time">
+                        <span id="hours"></span>
+                        :
+                        <span id="min"></span>
+                        :
+                        <span id="sec"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Calendar -->
+            <div class="shadowed side-calendar">
+                <div id="sidebar-calendar"></div>
+            </div>
+        </aside>
     </section>
 
 

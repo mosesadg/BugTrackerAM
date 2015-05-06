@@ -1,37 +1,44 @@
 ﻿
-@using BugTrackerAM.Models.CodeFirst
-@{
-    ViewBag.Title = "Users";
-}
+<!-- Content ----Main White color area-->
+<section id="content" class="container">
 
-<h2>User Role Management</h2>
 
-<div>
 
-    <div class=" ="col-md-12">
-        <table>
-            <thead> 
-                <tr>
-                <th>User Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                    
-                </tr>
+    @using BugTrackerAM.Models.CodeFirst
+    @{
+        ViewBag.Title = "Users";
+    }
 
-            </thead>
-            <tbody>
-                @foreach(var user in Model)
-                {
+    <h2>User Role Management</h2>
+
+    <div>
+
+        <div class=" =" col-md-12">
+            <table>
+                <thead>
                     <tr>
-                        <td> @user.DisplayName</td>
-                        <td> @user.Email</td>
-                
-                         <td>
-                           @Html.ActionLink("Edit Users", "EditUser", new{Id= user.Id  })
-                         </td>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+
                     </tr>
-                }
-            </tbody>
-        </table>
+
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td> @user.DisplayName</td>
+                            <td> @user.Email</td>
+
+                            <td>
+                                @Html.ActionLink("Edit Users", "EditUser", new { Id = user.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+
+</section>

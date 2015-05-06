@@ -1,160 +1,129 @@
-﻿
-<!-- Content ----Main White color area-->
-<section id="content" class="container">
+﻿@model IEnumerable<BugTrackerAM.Models.CodeFirst.Ticket>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Black Pearl Responsive Admin Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Black Pearl Responsive Admin Template">
+    <meta name="keywords" content="Black Pearl, Admin, Template, Bootstrap">
+    <meta charset="UTF-8">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/calendar.min.css" rel="stylesheet">
+    <link href="css/icomoon.min.css" rel="stylesheet">
+    <link href="css/media-player.min.css" rel="stylesheet">
+    <link href="css/file-manager.min.css" rel="stylesheet">
+    <link href="css/form.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+        <!-- Content -->
+        <section id="content" class="container">
+            <header class="p-header">
+                <h2 class="p-title">Tickets View</h2>
+            </header>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="example">
+                    <thead>
+                        <p>
+                            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-large" })
+                        </p>
+                                <tr>
+                                <th>Project</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+
+                            </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {                           
+                        <tr class="gradeX">
+                            <td>@Html.DisplayFor(modelItem => item.Project.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TicketPriority.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TicketStatus.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Created)</td>      
+                            <td>
+                                
+                                @Html.ActionLink("Edit", "Edit", null, new { @class = "btn btn-warning btn-large" })
+                                @Html.ActionLink("Details", "Details", null, new { @class = "btn btn-success btn-large" })
+                                @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-danger btn-large" })
+                                                               
+                            </td>
+                      
+                            @*<td class="center">4</td>
+                            <td class="center">X</td>*@
+                        </tr>
+                            
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
     
-    @model IEnumerable<BugTrackerAM.Models.CodeFirst.Ticket>
 
-    @using PagedList.Mvc
+    <footer id="footer">
+        <p>Copyright (c) 2012-2013, Lebaze Admin Templates. All rights reserved.</p>
+    </footer>
 
+    <!-- Javascipt -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src='js/jquery-ui-1.10.3.min.js'></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/feeds.js"></script>
+    <script src="js/chosen.js"></script>
+    <script src="js/shadowbox.js"></script>
+    <script src="js/sparkline.min.js"></script>
+    <script src="js/masonry.min.js"></script>
+    <script src="js/enscroll.min.js"></script>
+    <script src='js/calendar.min.js'></script>
+    <script src='js/datatables.min.js'></script>
+    <script src='js/autosize.min.js'></script>
+    <script src='js/select.min.js'></script>
+    <script src="js/toggler.min.js"></script>
+    <script src="js/datetimepicker.min.js"></script>
+    <script src="js/colorpicker.min.js"></script>
+    <script src="js/fileupload.min.js"></script>
+    <script src="js/media-player.js"></script>
+    <script src="js/validation/validate.min.js"></script>
+    <script src="js/validation/validationEngine.min.js"></script>
+    <script src='js/datatables.min.js'></script>
+    <script src="js/functions.js"></script>
 
-    @{
-        ViewBag.Title = "Index";
-    }
-
-    <h2>Tickets Index View</h2>
-
-    @using (Html.BeginForm())
-    {
-        <p>
-            <b style="color:Black"> Search for Tickets</b> @Html.TextBox("SearchString")
-            <input type="submit" value="Search" />
-        </p>
-    }
-
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.ActionLink("Project", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Project.Name)
-                </th>*@
-            <th>
-                @Html.ActionLink("Priority", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.TicketPriority.Name)
-                </th>*@
-            <th>
-                @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.TicketStatus.Name)
-                </th>*@
-
-            <th>
-                @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-
-            @*<th>
-                    @Html.DisplayNameFor(model => model.TicketType.Name)
-                </th>*@
-
-            <th>
-                @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>*@
-            <th>
-                @Html.ActionLink("Description", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>*@
-            <th>
-                @Html.ActionLink("Created", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Created)
-                </th>*@
-            <th>
-                @Html.ActionLink("Updated", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Updated)
-                </th>*@
-            <th>
-                @Html.ActionLink("Owner", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.OwnerUserId)
-                </th>*@
-            <th>
-                @Html.ActionLink("Assigned to", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-
-            @*<th>
-                    @Html.DisplayNameFor(model => model.AssignedToUserId)
-                </th>*@
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Project.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TicketPriority.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TicketStatus.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TicketType.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Created)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Updated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OwnerUser.DisplayName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AssignedToUser.DisplayName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-
-
-        }
-
-
-
-        @*Page@(Model.PageCount < ModelItem.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
-
-
-
-
-
-
-
-    </table>
-
-
-    </div>
-</section>
-
-
-
+    <!-- Initiate Data Table -->
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $('#example').dataTable( {
+                    "aoColumnDefs": [
+                        {
+                            // `data` refers to the data for the cell (defined by `mData`, which
+                            // defaults to the column being worked with, in this case is the first
+                            // Using `row[0]` is equivalent.
+                            "mRender": function ( data, type, row ) {
+                                    return data +' '+ row[3];
+                            },
+                            "aTargets": [ 0 ]
+                        },
+                        { "bVisible": false,  "aTargets": [ 3 ] },
+                        { "sClass": "center", "aTargets": [ 4 ] }
+                    ],
+                    "sPaginationType": "full_numbers"
+                });
+                //Modify Data Table
+                $('.dataTables_wrapper .sOption').wrapAll('<div class="sOption_wrapper"></div>');
+                $('.dataTables_wrapper .pagin').wrapAll('<div class="sOption_wrapper"></div>');
+            });
+    </script>
+</body>
+</html>
 
