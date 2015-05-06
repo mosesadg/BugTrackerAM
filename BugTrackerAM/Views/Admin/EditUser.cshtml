@@ -1,36 +1,40 @@
-﻿@model BugTrackerAM.Models.AdminUserViewModel
-@{
-    ViewBag.Title = "EditUser";
-}
+﻿<!-- Content ----Main W    hite color area-->
+<section id="content" class="container">
+
+
+    @model BugTrackerAM.Models.AdminUserViewModel
+    @{
+        ViewBag.Title = "EditUser";
+    }
 
 
 
-<h2>@ViewBag.Title.</h2>
+    <h2>@ViewBag.Title.</h2>
 
 
 
-@using (Html.BeginForm("EditUser", "Admin", null, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm("EditUser", "Admin", null, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+        <div class="form-horizontal">
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.User.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.User.Id)
+            <div class="form-group">
+                @Html.LabelFor(model => model.User.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.User.Id)
 
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
+            <div class="form-group">
+                <div class="col-md-10">
 
 
-                @Html.ListBox("SelectedRoles", Model.Roles, new { @class = "form-control" })
-                @*@Html.CheckBoxFor("SelectedRoles", Model.Roles, new { @class = "form-control" })*@
+                    @Html.ListBox("SelectedRoles", Model.Roles, new { @class = "form-control" })
+                    @*@Html.CheckBoxFor("SelectedRoles", Model.Roles, new { @class = "form-control" })*@
                 </div>
             </div>
 
@@ -44,3 +48,5 @@
         </div>
     }
 
+
+</section>

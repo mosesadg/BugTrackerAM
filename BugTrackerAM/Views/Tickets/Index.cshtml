@@ -1,7 +1,22 @@
 ﻿@model IEnumerable<BugTrackerAM.Models.CodeFirst.Ticket>
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Black Pearl Responsive Admin Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Black Pearl Responsive Admin Template">
+    <meta name="keywords" content="Black Pearl, Admin, Template, Bootstrap">
+    <meta charset="UTF-8">
 
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/calendar.min.css" rel="stylesheet">
+    <link href="css/icomoon.min.css" rel="stylesheet">
+    <link href="css/media-player.min.css" rel="stylesheet">
+    <link href="css/file-manager.min.css" rel="stylesheet">
+    <link href="css/form.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
 
 <body>
         <!-- Content -->
@@ -39,10 +54,14 @@
                             <td>@Html.DisplayFor(modelItem => item.Description)</td>
                             <td>@Html.DisplayFor(modelItem => item.Created)</td>      
                             <td>
+
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-large" }) 
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success btn-large" }) 
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-large" }) 
                                 
-                                @Html.ActionLink("Edit", "Edit", null, new { @class = "btn btn-warning btn-large" })
+                                @*@Html.ActionLink("Edit", "Edit", null, new {@class = "btn btn-warning btn-large" })
                                 @Html.ActionLink("Details", "Details", null, new { @class = "btn btn-success btn-large" })
-                                @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-danger btn-large" })
+                                @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-danger btn-large" })*@
                                                                
                             </td>
                       
@@ -55,7 +74,7 @@
                 </table>
             </div>
         </section>
-    
+    </section>
 
     <footer id="footer">
         <p>Copyright (c) 2012-2013, Lebaze Admin Templates. All rights reserved.</p>
