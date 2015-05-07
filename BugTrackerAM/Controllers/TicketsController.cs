@@ -108,10 +108,12 @@ namespace BugTrackerAM.Controllers
         {
             if (ModelState.IsValid)
             {
-                ticket.Created = DateTimeOffset.Now;
+                ticket.Created = System.DateTimeOffset.Now;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
+                
             }
 
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
@@ -119,6 +121,7 @@ namespace BugTrackerAM.Controllers
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
             ViewBag.AssignedUser = new SelectList(db.Users, "Id", "DisplayName",ticket.AssignedToUserId);
+                        
             return View(ticket);
         }
 

@@ -131,7 +131,7 @@
 
     <form method="post" action="@Url.Action("CreateComment")">
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.AntiForgeryToken()
                 @Html.Hidden("TicketId", Model.Id)
                 @Html.TextArea("Comment", "", new { @class = "form-control", rows = "5", placeholder = "Enter your comment" })
@@ -160,7 +160,7 @@
     <h4 style=" color:cadetblue; font-weight:bold; font-size:16px">Previous Comments. Total comments: @Model.TicketComments.Count()</h4>
     @foreach (var comment in Model.TicketComments)
     {
-
+        <p>_________________________________________</p>
 
 
         <br /><p>@Html.Raw(comment.Comment)</p>

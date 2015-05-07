@@ -7,6 +7,7 @@ namespace BugTrackerAM.Models.CodeFirst
 {
     public class Dashboard
     {
+        public int projectId { get; set; }
 
     }
 }
