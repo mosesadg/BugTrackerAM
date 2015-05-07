@@ -11,6 +11,7 @@
 
     <div>
         
+        
         @*<dl class="dl-horizontal">*@
         <div class="myClass">
             <dt>
@@ -155,7 +156,8 @@
     </br>
     </br>
 
-    <h4>Previous Comments</h4>
+    
+    <h4 style=" color:cadetblue; font-weight:bold; font-size:16px">Previous Comments. Total comments: @Model.TicketComments.Count()</h4>
     @foreach (var comment in Model.TicketComments)
     {
 
@@ -176,7 +178,8 @@
     </br>
     </br>
 
-    <h4 style=" color:cadetblue; font-weight:bold; font-size:16px">Previous Histories</h4>
+    <h4 style=" color:cadetblue; font-weight:bold; font-size:16px">Previous Histories. Total histories: @Model.TicketHistories.Count()</h4>
+    
     @foreach (var history in Model.TicketHistories)
     {
 

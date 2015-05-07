@@ -23,6 +23,12 @@
         <section id="content" class="container">
             @*<header class="p-header">*@
                 <h2>Tickets View</h2>
+
+            <h4>
+                <i><b> Total Tickets: @Model.Count()</b></i>
+                
+            </h4>
+
             @*<h2 class="p-title">Tickets View</h2>*@
                 
             @*</header>*@
@@ -45,9 +51,12 @@
                             </tr>
                     </thead>
                     <tbody>
+                        
 
                         @foreach (var item in Model)
-                        {                           
+                        {
+                            
+                                         
                         <tr class="gradeX">
                             <td>@Html.DisplayFor(modelItem => item.Project.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.TicketPriority.Name)</td>
@@ -64,7 +73,7 @@
                                 @*@Html.ActionLink("Edit", "Edit", null, new {@class = "btn btn-warning btn-large" })
                                 @Html.ActionLink("Details", "Details", null, new { @class = "btn btn-success btn-large" })
                                 @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-danger btn-large" })*@
-                                                               
+                                                              
                             </td>
                       
                             @*<td class="center">4</td>
@@ -72,6 +81,8 @@
                         </tr>
                             
                         }
+
+
                     </tbody>
                 </table>
             </div>

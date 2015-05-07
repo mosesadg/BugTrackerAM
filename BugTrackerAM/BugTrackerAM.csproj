@@ -204,6 +204,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserViewModel.cs" />
+    <Compile Include="Models\CodeFirst\Dashboard.cs" />
     <Compile Include="Models\CodeFirst\Project.cs" />
     <Compile Include="Models\CodeFirst\Ticket.cs" />
     <Compile Include="Models\CodeFirst\TicketAttachment.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Models\CodeFirst\TicketPriorities.cs" />
     <Compile Include="Models\CodeFirst\TicketStatuses.cs" />
     <Compile Include="Models\CodeFirst\TicketTypes.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProjectUsersViewModel.cs" />
@@ -1247,6 +1249,7 @@
     <Folder Include="fonts\" />
     <Folder Include="img\" />
     <Folder Include="Template\files\" />
+    <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\ProjectUser\" />
   </ItemGroup>
   <ItemGroup>

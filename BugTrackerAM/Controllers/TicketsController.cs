@@ -25,7 +25,7 @@ namespace BugTrackerAM.Controllers
         // GET: Tickets
         public ActionResult Index(int? page, string searchString, string sortOrder)
         {
-
+            
                 
                 var UserId = User.Identity.GetUserId();//added by Thomas for list search
 
@@ -60,7 +60,7 @@ namespace BugTrackerAM.Controllers
                             break;
                     }
 
-                                       
+                                 
 
                     return View(tickets.ToList());
                     //return View(tickets.ToList().ToPagedList(page ?? 1, 3));
