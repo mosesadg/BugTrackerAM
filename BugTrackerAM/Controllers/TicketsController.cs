@@ -12,6 +12,7 @@ using PagedList;
 using PagedList.Mvc;
 using Microsoft.AspNet.Identity;
 using System.IO;
+using BugTrackerAM.Helpers;
 
 
 
@@ -148,25 +149,68 @@ namespace BugTrackerAM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedToUserId")] Ticket ticket)
         {
+            var helperrole = new UserRolesHelper();
+
             if (ModelState.IsValid)
             {
+                var OldTicket = ( from t in db.Tickets.AsNoTracking() where t.Id ==ticket.Id select t).FirstOrDefault();
 
+                //var OldTicket = db.Tickets.AsNoTracking().FirstOrDefault(t=>t.Id == ticket.Id);//another way for the above code
+                
+                if(OldTicket.AssignedToUserId!=ticket.AssignedToUserId)
+                {
 
+                var AssignedHistory = new TicketHistories
+                {
+                    TicketId = ticket.Id,
+                    UserId = User.Identity.GetUserId(),
+                    property ="AssignedUser Id",
+                    OldValue = OldTicket.AssignedToUserId,
+                    NewValue = ticket.AssignedToUserId,
+                    Changed = System.DateTimeOffset.Now,
+                };
+                    db.TicketHistories.Add(AssignedHistory);
+                }
 
-                ////added may 5
-            //};
-            
-            //db.TicketHistories.Add(AssignedHistory);
+                if (OldTicket.Title != ticket.Title)
+                {
+
+                    var AssignedHistory1 = new TicketHistories
+                    {
+                        TicketId = ticket.Id,
+                        UserId = User.Identity.GetUserId(),
+                        property = "Title was changed",
+                        OldValue = OldTicket.AssignedToUserId,
+                        NewValue = ticket.AssignedToUserId,
+                        Changed = System.DateTimeOffset.Now,
+                    };
+                    db.TicketHistories.Add(AssignedHistory1);
+                }
+                if (OldTicket.Description!= ticket.Description)
+                {
+
+                    var AssignedHistory2 = new TicketHistories
+                    {
+                        TicketId = ticket.Id,
+                        UserId = User.Identity.GetUserId(),
+                        property = "Description was changed",
+                        OldValue = OldTicket.AssignedToUserId,
+                        NewValue = ticket.AssignedToUserId,
+                        Changed = System.DateTimeOffset.Now,
+                    };
+                    db.TicketHistories.Add(AssignedHistory2);
+                }  
             ////Fire off notification to user?
-            //var user = db.Users.Find(User.Identity.GetUserId());
-            //new EmailService ().SendAsync(new IdentityMessage
-            //{
-            //    Subject ="You have been assigned a new ticket",
-            //    Destination =user.Email,
-            //    Body = "Whatever you want"
+                   
+            var user = db.Users.Find(User.Identity.GetUserId());
+            new EmailService ().SendAsync(new IdentityMessage
+            {
+                Subject ="You have been assigned a new ticket",
+                Destination =user.Email,
+                Body = "Whatever you want"
 
-            //});
-            //}
+            });
+            
 
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
@@ -179,6 +223,7 @@ namespace BugTrackerAM.Controllers
             ViewBag.AssignedUser = new SelectList(db.Users, "Id", "DisplayName");
             return View(ticket);
         }
+
 
         // GET: Tickets/Delete/5
         public ActionResult Delete(int? id)

@@ -1,142 +1,214 @@
-﻿@model BugTrackerAM.Models.CodeFirst.Ticket
- 
+﻿<!-- Content ----Main White color area-->
+<section id="content" class="container">
 
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
-<div>
-    <h4>Ticket</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Project.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Project.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketPriority.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TicketPriority.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketStatus.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TicketStatus.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TicketType.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TicketType.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OwnerUserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OwnerUserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AssignedToUserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AssignedToUserId)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
-<form method="post" action="@Url.Action("CreateComment")">
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.AntiForgeryToken()
-            @Html.Hidden("TicketId", Model.Id)
-            @Html.TextArea("Comment", "", new { @class = "form-control", rows = "5", placeholder = "Enter your comment" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" style="border: 4pt ridge lightgrey" value="Create Comment" class="btn btn-default" />
-        </div>
-    </div>
-
-</form>
-</br>
-    </br>
-    </br>
-    </br>
-@foreach (var comment in Model.TicketComments)
-{
+    @model BugTrackerAM.Models.CodeFirst.Ticket
     
+    @{
+        ViewBag.Title = "Details";
+    }
+
+    <h2>Ticket Details</h2>
+
+    <div>
+        
+        @*<dl class="dl-horizontal">*@
+        <div class="myClass">
+            <dt>
+                <b> @Html.LabelFor(model => model.Project.Name, "Project Name")</b>
+        </div>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Project.Name)
+            </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.TicketPriority.Name, "Ticket Priority")
+            </dt>
+            </div>
+            <dd>
+                @Html.DisplayFor(model => model.TicketPriority.Name)
+            </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.TicketStatus.Name, "Ticket Status")
+
+            </dt>
+            </div>
+            <dd>
+                @Html.DisplayFor(model => model.TicketStatus.Name)
+            </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.TicketType.Name, "Ticket Type")
+            </dt>
+            </div>
+            <dd>
+                @Html.DisplayFor(model => model.TicketType.Name)
+            </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.Title, "Title")
+            </dt>
+
+            </div>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+        </br>
+        <div class="myClass">
+    <dt>
+        
+        @Html.LabelFor(model => model.Description, "Description")
+
+    </dt>
+
+        </div>
+
+    <dd>
+        @Html.DisplayFor(model => model.Description)
+    </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.Created, "Created")
+            </dt>
+            </div>
+
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.Updated, "Updated")
+            </dt>
+            </div>
+
+            <dd>
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.OwnerUserId, "Owner")
+            </dt>
+            </div>
+            <dd>
+                @Html.DisplayFor(model => model.OwnerUserId)
+            </dd>
+        </br>
+        <div class="myClass">
+            <dt>
+                
+                @Html.LabelFor(model => model.AssignedToUserId, "Assigned User")
+            </dt>
+            </div>
+
+            <dd>
+                @Html.DisplayFor(model => model.AssignedToUserId)
+
+            </dd>
+           @*</dl>*@
+        </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    <form method="post" action="@Url.Action("CreateComment")">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.AntiForgeryToken()
+                @Html.Hidden("TicketId", Model.Id)
+                @Html.TextArea("Comment", "", new { @class = "form-control", rows = "5", placeholder = "Enter your comment" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*<div class="col-md-offset-2 col-md-10">*@
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+                <input type="submit" value="Create Comment" class="btn btn-success btn-large" />
+            @*</div>*@
+        </div>
+
+    </form>
+    </br>
+    </br>
+    </br>
+    </br>
+
+    <h4>Previous Comments</h4>
+    @foreach (var comment in Model.TicketComments)
+    {
 
 
-    <br /><p>@Html.Raw(comment.Comment)</p>
+
+        <br /><p>@Html.Raw(comment.Comment)</p>
 
 
-    <br />
-    <td>
-        @Html.ActionLink("DeleteComment", "DeleteComment", new { id = comment.Id })
-    </td>
-        }
+        <br />
+        <td>
+            @*@Html.ActionLink("DeleteComment", "DeleteComment", new { id = comment.Id })*@
+
+            @Html.ActionLink("DeleteComment", "DeleteComment", new { id = comment.Id }, new { @class = "btn btn-danger btn-large" })
+            
+        </td>
+    }
+    </br>
+    </br>
+    </br>
+
+    <h4 style=" color:cadetblue; font-weight:bold; font-size:16px">Previous Histories</h4>
+    @foreach (var history in Model.TicketHistories)
+    {
+
+        <p>_________________________________________</p>
+
+        @*<br /><p>@Html.Raw(history.NewValue)</p>*@
+        <br /><p><b>Field changed: </b>  @Html.Raw(history.property)</p>
+        @*<br /><p>@Html.Raw(history.UserId)</p>*@
+        <br /><p><b>Change time: </b> @Html.Raw(history.Changed)</p>
+        @*<br /><p>@Html.Raw(history.OldValue)</p>*@
+
+
+        <br />
+        <td>
+            @*@Html.ActionLink("DeleteComment", "DeleteComment", new { id = comment.Id })*@
+        </td>
+    }
 
 
 
-
-        @*   @Html.ActionLink("EditComment", "EditComment", new { id = TicketComments.ID })
-            </td>*@
+    </section>
 
 
+    @*   @Html.ActionLink("EditComment", "EditComment", new { id = TicketComments.ID })
+        </td>*@
 
+
+
+<style>
+    .myClass label {
+        font-weight: bold;
+        font-size: 16px;
+        color:cadetblue;
+      }
+</style>
