@@ -87,12 +87,12 @@
     <!-- Header -->
     <header id="header" class="clearfix">
         <!-- Logo -->
-        <a href="index.html" class="logo shadowed">
-
+        <a href="" class="logo shadowed">
+            @*<li>@Html.ActionLink("User Dashboard", "Index", "Home")</li*@
          
             BUG TRACKER
         </a>
-        @Html.ActionLink("Bug Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @*@Html.ActionLink("Bug Tracker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
         <div class="dropdown profile-menu shadowed">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <img src="img/profile-pics/profile-pic.png" alt="" class="profile-pic">
@@ -242,96 +242,55 @@
         <div class="sidebar-container">
             <!-- Main Menu -->
             <ul class="side-menu shadowed">
-                <li>
-                    <a class="active" href="index.html"><i class="icon-home"></i>Dashboard</a>
-                </li>
-                <li>
-                    @*<a href="Projects\index.html"><i class="icon-quill"></i>Typography</a>*@
-
-                <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
-
-
                 
+                <li class="submenu">
+                    <a href=""><i class="icon-home"></i>Dashboard</a>
+                    <ul>
+                        <li>@Html.ActionLink("User Dashboard", "Index", "Home")</li>
+                     </ul>
+                </li>
+                                
 
-                        
+                <li class="submenu">
+                    <a href=""><i class="icon-home"></i>Tickets</a>
+                    <ul>
+                        <li>@Html.ActionLink("All Tickets", "Index", "Tickets")</li>
+                        <li>@Html.ActionLink("Create Tickets", "Create", "Tickets")</li>
+                    </ul>
+                </li>
 
-                </li>
-                <li>
-                    @*<a href="wall.html"><i class="icon-bubbles-4"></i>Social Wall</a>*@
-                <li>@Html.ActionLink("Tickets", "Index", "Tickets")</li>
-                </li>
                 <li class="submenu">
-                    @*<a href=""><i class="icon-cog"></i>Widgets</a>*@
-                <li>@Html.ActionLink("User-Roles", "Users", "Admin")</li>
+                    <a href=""><i class="icon-home"></i>Projects</a>
                     <ul>
-                        <li><a href="sidebar-widgets.html">Sidebar</a></li>
-                        <li><a href="content-widgets.html">Content</a></li>
-                        <li><a href="shortcut-widgets.html">Shortcuts</a></li>
+                        <li>@Html.ActionLink("All Projects", "Index", "Projects")</li>
+                        <li>@Html.ActionLink("Create Project", "Create", "Projects")</li>
+                        <li>@Html.ActionLink("Project User Tables", "AssignUsers", "ProjectsUsers")</li>
                     </ul>
                 </li>
+
                 <li class="submenu">
-                    <a href=""><i class="icon-table-2"></i>Tables</a>
+                    <a href=""><i class="icon-home"></i>User Roles</a>
                     <ul>
-                        <li><a href="tables.html">Normal Tables</a></li>
-                        <li><a href="data-table.html">Data Table</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href=""><i class="icon-copy-2"></i>Forms</a>
-                    <ul>
-                        <li><a href="form-elements.html">Basic Form Elements</a></li>
-                        <li><a href="form-components.html">Form Components</a></li>
-                        <li><a href="form-examples.html">Form Examples</a></li>
-                        <li><a href="form-validation.html">Form Validation</a></li>
-                        <li><a href="form-wizard.html">Form Wizard</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href=""><i class="icon-glass"></i>User Interface</a>
-                    <ul>
-                        <li><a href="buttons.html">Buttons</a></li>
-                        <li><a href="labels.html">Labels</a></li>
-                        <li><a href="images-icons.html">Images & Icons</a></li>
-                        <li><a href="alerts.html">Alerts</a></li>
-                        <li><a href="media.html">Media</a></li>
-                        <li><a href="pagination-breadcrumbs.html">Pagination & Breadcrumbs</a></li>
-                        <li><a href="components.html">Components</a></li>
-                        <li><a href="other-components.html">Others</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="charts.html"><i class="icon-bars"></i>Charts</a>
-                </li>
-                <li>
-                    <a href="file-manager.html"><i class="icon-folder"></i>File Manager</a>
-                </li>
-                <li>
-                    <a href="calendar.html"><i class="icon-calendar"></i>Calendar</a>
-                </li>
-                <li class="submenu">
-                    <a href=""><i class="icon-camera"></i>Photo Gallery</a>
-                    <ul>
-                        <li><a href="photo-gallery-default.html">Default Gallery</a></li>
-                        <li><a href="photo-gallery-sortable.html">Sortable Gallery</a></li>
+                        <li>@Html.ActionLink("Assign Roles", "Users", "Admin")</li>
 
                     </ul>
-                </li>
+                <li>
+
                 <li class="submenu">
-                    <a href=""><i class="icon-stack"></i>Sample Pages</a>
+                    <a href=""><i class="icon-home"></i>Notifications</a>
                     <ul>
-                        <li><a href="list-view.html">List View</a></li>
-                        <li><a href="profile-page.html">Profile Page</a></li>
-                        <li><a href="messages.html">Messages</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="404.html">404 Error</a></li>
+                        <li>@Html.ActionLink("User Notifications", "Users", "Admin")</li>
+
                     </ul>
-                </li>
+                <li>
+
             </ul>
         </div>
         <span id="leftbar-toggle" class="visible-xs sidebar-toggle">
             <i class="icon-angle-right"></i>
         </span>
     </aside>
+        </section>
 
         @*<!-- Right Sidebar -->
         <aside id="rightbar" class="pull-right">
@@ -379,27 +338,27 @@
     <i class="icon-cogs" id="tc-toggle"></i>
     <ul data-elem="body">
         <li class="header">Body</li>
-        <li><img src="img/body-bg/cloth.png" alt=""></li>
-        <li><img src="img/body-bg/stripes.png" alt=""></li>
-        <li><img src="img/body-bg/bluetec.png" alt=""></li>
-        <li><img src="img/body-bg/cement.png" alt=""></li>
-        <li><img src="img/body-bg/fabric.png" alt=""></li>
-        <li><img src="img/body-bg/fabric-2.png" alt=""></li>
-        <li><img src="img/body-bg/floor.png" alt=""></li>
-        <li><img src="img/body-bg/leather.png" alt=""></li>
-        <li><img src="img/body-bg/pixel.png" alt=""></li>
-        <li><img src="img/body-bg/tactile.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/cloth.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/stripes.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/bluetec.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/cement.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/fabric.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/fabric-2.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/floor.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/leather.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/pixel.png" alt=""></li>
+        <li><img src="/Template/img/body-bg/tactile.png" alt=""></li>
     </ul>
     <ul data-elem="content">
         <li class="header">Content</li>
-        <li><img src="img/content-bg/content-bg.jpg" alt=""></li>
-        <li><img src="img/content-bg/lines.png" alt=""></li>
-        <li><img src="img/content-bg/cloth.png" alt=""></li>
-        <li><img src="img/content-bg/grid.png" alt=""></li>
-        <li><img src="img/content-bg/gray-leather.png" alt=""></li>
-        <li><img src="img/content-bg/jean.png" alt=""></li>
-        <li><img src="img/content-bg/light.png" alt=""></li>
-        <li><img src="img/content-bg/subtle.png" alt=""></li>
+        <li><img src="/Template/img/content-bg/content-bg.jpg" alt=""></li>
+        <li><img src="/Template/img/content-bg/lines.png" alt=""></li>
+        <li><img src="/Template/img/content-bg/cloth.png" alt=""></li>
+        <li><img src="/Template/img/content-bg/grid.png" alt=""></li>
+        <li><img src="/Template/img/content-bg/gray-leather.png" alt=""></li>
+        <li><img src="/Template/img/content-bg/jean.png" alt=""></li>
+        <li><img src="/Template/img/content-bg/light.png" alt=""></li>
+        <li><img src="/Template/img/content-bg/subtle.png" alt=""></li>
     </ul>
 </div>
 

@@ -34,7 +34,11 @@
 
 
                 @Html.ListBox("SelectedRoles", Model.Roles, new { @class = "form-control" })
-                @*@Html.CheckBoxFor("SelectedRoles", Model.Roles, new { @class = "form-control" })*@
+                @*@Html.CheckBox("SelectedRoles", Model.Roles, new { @class = "form-control" })*@
+
+                
+                
+                   
 
             </div>
         </div>
@@ -52,5 +56,33 @@
         @*</div>*@
     }
 
+   
 
+    <p>Multiple Selects</p>
+    <div class="row">
+        <div class="col-md-6">
+            <select class="select" multiple>
+                <option>Toyota Avalon</option>
+                <option>Toyota Crown</option>
+                <option>Toyota FT86 </option>
+                <option>Lexus LS600</option>
+                <option>Lexus LFA</option>
+                <option>Lexus LX570</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <select class="select" multiple data-selected-text-format="count>3">
+            <option>Toyota Avalon</option>
+            <option>Toyota Crown</option>
+            <option>Toyota FT86 </option>
+            <option>Lexus LS600</option>
+            <option>Lexus LFA</option>
+            <option>Lexus LX570</option>
+        </select>
+    </div>
+    
 </section>
+

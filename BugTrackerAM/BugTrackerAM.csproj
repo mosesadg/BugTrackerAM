@@ -1242,6 +1242,7 @@
     <Content Include="Template\php\elFinderVolumeLocalFileSystem.class.php" />
     <Content Include="Template\php\elFinderVolumeMySQL.class.php" />
     <Content Include="Template\php\mime.types" />
+    <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
